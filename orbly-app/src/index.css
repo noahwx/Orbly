@@ -1,0 +1,18 @@
+@import url("https://use.typekit.net/eos0jmw.css");
+
+* {
+    font-family: "articulat-cf", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --primary-color: #FFFC31;
+    --white: #FFFFF8;
+    --offwhite: #F8F8F1;
+    --black: #1F1E1E;
+    --grey: #77878B;
+    --dark-grey: #312F2F;
+    --error: #DA3E52;
+    --success: #63E979;
+}

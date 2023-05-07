@@ -1,0 +1,89 @@
+.menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--white);
+    width: 10%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 1em;
+    z-index: 100;
+    border-right: 1px solid var(--grey);
+} 
+
+.menu-title {
+    position: absolute;
+    top: 1em;
+    font-size: 2em;
+    font-weight: 700;
+    color: var(--black);
+    margin-bottom: 1em;
+    text-decoration: none;
+}
+
+.menu-items {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 80%;
+}
+
+.menu-item {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--black);
+    margin: 0.5em;
+    padding: 0.5em;
+    text-decoration: none;
+    text-align: left;
+    transition: all 0.2s ease-in-out;
+    width: 100%;
+}
+
+.menu-item:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.menu-item.active {
+    font-weight: 700;
+}
+
+.create-button {
+    background: none;
+    border: none;
+    width: 100%;
+}
+
+.menu-settings {
+    position: absolute;
+    bottom: 1em;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--black);
+    margin: 0.5em;
+    padding: 0.5em;
+    text-decoration: none;
+    text-align: left;
+}
+
+.menu-item-settings {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--black);
+    margin: 0.5em;
+    padding: 0.5em;
+    background: none;
+    border: none;
+    transition: all 0.2s ease-in-out;
+}
+
+.menu-item-settings:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 1em;
+}
