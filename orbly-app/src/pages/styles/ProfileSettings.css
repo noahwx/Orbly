@@ -1,0 +1,108 @@
+.profile-settings {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--background);
+}
+
+.profile-settings-title {
+    position: absolute;
+    top: 2em;
+    left: 10em;
+    font-size: 2em;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.profile-settings-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: 15em;
+    width: 50em;
+    height: 70em;
+    background-color: var(--background);
+    border: 2px solid var(--border);
+}
+
+.profile-settings-form {
+    display: block;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: 2em;
+    width: 40em;
+    height: 60em;
+    background-color: var(--background);
+}
+
+.profile-settings-profile-picture {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 100px;
+}
+
+.profile-settings-profile-picture img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.profile-settings-label {
+    display: block;
+    position: relative;
+    top: 2em;
+    font-size: 1.2em;
+    font-weight: 700;
+    margin-top: 1em;
+    margin-bottom: 0.2em;
+    color: var(--text);
+}
+
+.profile-settings-input {
+    position: relative;
+    top: 2em;
+    width: 50%;
+    height: 1.5em;
+    font-size: 1.2em;
+    padding: 0.2em;
+    font-weight: 700;
+    border: 2px solid var(--border);
+    border-radius: 5px;
+    color: var(--text);
+    background-color: var(--background);
+}
+
+.profile-settings-input:focus {
+    outline: none;
+}
+
+.profile-settings-button{
+    position: relative;
+    top: 4em;
+    width: 50%;
+    height: 2.5em;
+    font-size: 1.2em;
+    font-weight: 700;
+    border: 2px solid var(--border);
+    border-radius: 5px;
+    color: var(--text);
+    background-color: var(--background);
+}
+
+.profile-settings-button:hover {
+    background-color: var(--background-hover);
+    cursor: pointer;
+}

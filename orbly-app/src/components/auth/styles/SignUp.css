@@ -1,0 +1,323 @@
+.signup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    overflow: scroll;
+    background-color: var(--white);
+}
+
+.signup-logo {
+    position: absolute;
+    top: 1em;
+    left: 1em;
+    width: 5em;
+    height: 5em;
+    border-radius: 50%;
+    background-color: var(--white);
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: all 0.5s ease-in-out;
+}
+
+.signup-logo img {
+    width: 100%;
+    height: 100%;
+}
+
+.signup-logo:hover {
+    transform: rotate(360deg) scale(5);
+}
+
+.signup-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 30em;
+    height: 65em;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-radius: 1em;
+    background-color: var(--white);
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+}
+
+.signup-form-title {
+    position: absolute;
+    top: 1em;
+    font-size: 2em;
+    font-weight: 700;
+    color: var(--black);
+    margin-bottom: 1em;
+}
+
+.signup-form-contents {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.signup-form-label-email {
+    font-size: 1.2em;
+    font-weight: 700;
+    color: var(--black);
+    margin: 0.5em;
+}
+
+.signup-form-input-email {
+    width: 80%;
+    height: 2em;
+    border-radius: 0.5em;
+    margin: 0.5em;
+    padding: 0.5em;
+    font-size: 1em;
+    font-weight: 700;
+    color: var(--black);
+    background: none;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease-in-out;
+}
+
+.signup-form-label-username {
+    font-size: 1.2em;
+    font-weight: 700;
+    color: var(--black);
+    margin: 0.5em;
+}
+
+.signup-form-input-username {
+    width: 80%;
+    height: 2em;
+    border-radius: 0.5em;
+    margin: 0.5em;
+    padding: 0.5em;
+    font-size: 1em;
+    font-weight: 700;
+    color: var(--black);
+    background: none;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease-in-out;
+}
+
+.signup-form-name-container {
+    display: block;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.signup-form-label-en {
+    font-size: 1.2em;
+    font-weight: 700;
+    color: var(--black);
+    margin: 0.5em;
+}
+
+.signup-form-input-fn {
+    width: 35%;
+    height: 2em;
+    border-radius: 0.5em;
+    margin: 0.5em;
+    padding: 0.5em;
+    font-size: 0.9em;
+    font-weight: 700;
+    color: var(--black);
+    background: none;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease-in-out;
+}
+
+.signup-form-input-ln {
+    width: 35%;
+    height: 2em;
+    border-radius: 0.5em;
+    margin: 0.5em;
+    padding: 0.5em;
+    font-size: 0.9em;
+    font-weight: 700;
+    color: var(--black);
+    background: none;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease-in-out;
+}
+
+.signup-form-label-dob {
+    font-size: 1.2em;
+    font-weight: 700;
+    color: var(--black);
+    margin: 0.5em;
+}
+
+.signup-form-input-dob {
+    width: 80%;
+    height: 2em;
+    border-radius: 0.5em;
+    margin: 0.5em;
+    padding: 0.5em;
+    font-size: 1em;
+    font-weight: 700;
+    color: var(--black);
+    background: none;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease-in-out;
+}
+
+.signup-form-label-pn {
+    font-size: 1.2em;
+    font-weight: 700;
+    color: var(--black);
+    margin: 0.5em;
+}
+
+.signup-form-input-pn {
+    width: 80%;
+    height: 2em;
+    border-radius: 0.5em;
+    margin: 0.5em;
+    padding: 0.5em;
+    font-size: 1em;
+    font-weight: 700;
+    color: var(--black);
+    background: none;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease-in-out;
+}
+
+.signup-form-password-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.signup-form-label-confirm-password {
+    font-size: 1.2em;
+    font-weight: 700;
+    color: var(--black);
+    margin: 0.5em;
+}
+
+.signup-form-input-confrim-password {
+    width: 80%;
+    height: 2em;
+    border-radius: 0.5em;
+    margin: 0.5em;
+    padding: 0.5em;
+    font-size: 1em;
+    font-weight: 700;
+    color: var(--black);
+    background: none;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease-in-out;
+}
+
+.signup-form-label-password {
+    font-size: 1.2em;
+    font-weight: 700;
+    color: var(--black);
+    margin: 0.5em;
+}
+
+.signup-form-input-password {
+    width: 80%;
+    height: 2em;
+    border-radius: 0.5em;
+    margin: 0.5em;
+    padding: 0.5em;
+    font-size: 1em;
+    font-weight: 700;
+    color: var(--black);
+    background: none;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease-in-out;
+}
+
+.signup-terms-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+}
+
+.signup-terms-checkbox {
+    width: 1.5em;
+    height: 1.5em;
+    margin: 0.5em;
+}
+
+.signup-terms-label {
+    font-size: 1em;
+    font-weight: 700;
+    color: var(--black);
+    margin: 0.5em;
+}
+
+.signup-button {
+    width: 80%;
+    height: 2.5em;
+    border-radius: 0.5em;
+    margin: 0.5em;
+    padding: 0.5em;
+    font-size: 1em;
+    font-weight: 700;
+    color: var(--white);
+    background: var(--black);
+    border: none;
+    transition: all 0.2s ease-in-out;
+}
+
+.signup-button:hover {
+    cursor: pointer;
+    background: var(--white);
+    color: var(--black);
+    border: 2px solid var(--black);
+}
+
+.signup-button:active {
+    cursor: pointer;
+    background: var(--grey);
+    color: var(--white);
+}
+
+.signup-form-bottom {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.signup-form-bottom-text {
+    font-size: 1em;
+    font-weight: 700;
+    color: var(--black);
+    margin: 0.5em;
+}
+
+.signup-form-bottom a {
+    font-size: 1em;
+    font-weight: 700;
+    color: var(--black);
+    margin: 0.5em;
+    text-decoration: none;
+}
+
+.signup-form-bottom a:hover {
+    color: var(--grey);
+    text-decoration: underline;
+}
