@@ -49,7 +49,8 @@ const SignIn = () => {
     return ( 
         <div className='signin'>
             <div className="signin-logo">
-                <img src={logo} alt="orbly-logo" />
+                <img src={logo} alt="orbly-logo" className="signin-logo-1"/>
+                <img src={logo} alt="orbly-logo" className="signin-logo-2"/>
             </div>
             <div className='form-container' id="form-container">
                 <form onSubmit={signIn} className='signin-form' id="signin-form">

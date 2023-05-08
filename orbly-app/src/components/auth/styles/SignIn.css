@@ -26,6 +26,46 @@
     transform: rotate(360deg);
 }
 
+.signin-logo-1 {
+    position: absolute;
+    animation: orbitShrink 5s linear forwards;
+}
+
+.signin-logo-2 {
+    opacity: 0;
+    animation: orbit 5s linear forwards;
+    animation-iteration-count: 1;
+    animation-delay: 0.5s;
+}
+
+@keyframes orbit {
+    0% {
+        transform: rotate(0deg) translateX(0) scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: rotate(360deg) translateX(100%) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: rotate(720deg) translateX(0) scale(0);
+        opacity: 0;
+    }
+}
+
+@keyframes orbitShrink {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.5);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
 .form-container {
     display: flex;
     flex-direction: column;

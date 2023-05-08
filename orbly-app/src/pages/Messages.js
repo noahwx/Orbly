@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import Menu from "../components/Menu";
-import './styles/Home.css';
+import "./styles/Messages.css";
 
-const Home = ({
+const Messages = ({
     toggleTheme,
     theme,
 }) => {
@@ -33,8 +33,8 @@ const Home = ({
     }
 
     return ( 
-        <div className='home'>
-            <h1>Home</h1>
+        <div className='messages'>
+            <h1>Messages</h1>
             <Menu 
                 auth={auth}
                 authUser={authUser}
@@ -42,9 +42,8 @@ const Home = ({
                 toggleTheme={toggleTheme}
                 theme={theme}
             />
-            {authUser ? <button onClick={() => handleSignOut()}>Sign Out</button> : null}
         </div>
     );
 }
  
-export default Home;
+export default Messages;

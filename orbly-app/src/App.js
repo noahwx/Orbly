@@ -6,8 +6,13 @@ import SignUp from './components/auth/SignUp';
 import './App.css';
 import Home from './pages/Home';
 import ResetPassword from './components/auth/ResetPassword';
+import Explore from './pages/Explore';
+import Messages from './pages/Messages';
+import Notifications from './pages/Notifications';
+import Profile from './pages/Profile';
+import ProfileSettings from './pages/ProfileSettings';
 
-/// Version 0.1.000
+/// Version 0.2.000
 
 function App() {
 
@@ -36,14 +41,72 @@ function App() {
     return children;
   };
 
+  const [theme, setTheme] = React.useState('light');
+
+  const toggleTheme = () => {
+    if (theme === 'light') {
+        setTheme('dark');
+    } else {
+        setTheme('light');
+    }
+  };
+
+  React.useEffect(() => {
+    const localTheme = window.localStorage.getItem('theme');
+    localTheme && setTheme(localTheme);
+  }, []);
+
   return (
-    <div className="App">
+    <div className={`App ${theme}`}>
       <Router>
         <Routes>
           <Route path='/' element={<SignIn />} />
           <Route path='/home' element={
             <PrivateRoute>
-              <Home />
+              <Home 
+                toggleTheme={toggleTheme}
+                theme={theme}
+              />
+            </PrivateRoute>
+          } />
+          <Route path='/explore' element={
+            <PrivateRoute>
+              <Explore 
+                toggleTheme={toggleTheme}
+                theme={theme}
+              />
+            </PrivateRoute>
+          } />
+          <Route path='/messages' element={
+            <PrivateRoute>
+              <Messages 
+                toggleTheme={toggleTheme}
+                theme={theme}
+              />
+            </PrivateRoute>
+          } />
+          <Route path='/notifications' element={
+            <PrivateRoute>
+              <Notifications 
+                toggleTheme={toggleTheme}
+                theme={theme}
+              />
+            </PrivateRoute>
+          } />
+          <Route path='/:username' element={
+            <PrivateRoute>
+              <Profile 
+                toggleTheme={toggleTheme}
+                theme={theme}
+              />
+            </PrivateRoute>
+          } />
+          <Route path='/account/settings' element={
+            <PrivateRoute>
+              <ProfileSettings 
+                toggleTheme={toggleTheme}
+                theme={theme}
+              />
             </PrivateRoute>
           } />
           <Route path='/signup' element={<SignUp />} />

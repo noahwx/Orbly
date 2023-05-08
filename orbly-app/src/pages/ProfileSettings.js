@@ -1,14 +1,16 @@
 import React, { useState } from "react";
-import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import Menu from "../components/Menu";
-import './styles/Home.css';
+import ProfileSettingsForm from "../components/ProfileSettingsForm";
+import "./styles/ProfileSettings.css"
 
-const Home = ({
+const ProfileSettings = ({
     toggleTheme,
     theme,
 }) => {
 
+    const navigate = useNavigate();
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
         if (user) {
@@ -17,10 +19,8 @@ const Home = ({
             console.log('user is signed out');
         }
     });
-
+    
     const [authUser, setAuthUser] = useState(null);
-
-    const navigate = useNavigate();
 
     const handleSignOut = () => {
         signOut(auth).then(() => {
@@ -33,8 +33,7 @@ const Home = ({
     }
 
     return ( 
-        <div className='home'>
-            <h1>Home</h1>
+        <div className='profile-settings'>
             <Menu 
                 auth={auth}
                 authUser={authUser}
@@ -42,9 +41,15 @@ const Home = ({
                 toggleTheme={toggleTheme}
                 theme={theme}
             />
-            {authUser ? <button onClick={() => handleSignOut()}>Sign Out</button> : null}
+            <h1 className="profile-settings-title">Settings</h1>
+            <div className="profile-settings-container">
+                <ProfileSettingsForm 
+                    auth={auth}
+                    authUser={authUser}
+                />
+            </div>
         </div>
     );
 }
  
-export default Home;
+export default ProfileSettings;

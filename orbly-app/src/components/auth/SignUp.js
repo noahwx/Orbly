@@ -1,10 +1,15 @@
 import React, { useState } from "react";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../../firebase";
+import { useNavigate } from "react-router-dom";
+import { setDoc, doc } from "firebase/firestore";
+import { db } from "../../firebase";
 import logo from '../../Assets/logo.svg';
 import './styles/SignUp.css';
 
 const SignUp = () => {
+
+    const navigate = useNavigate();
 
     const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
@@ -49,6 +54,37 @@ const SignUp = () => {
         .then((userCredential) => {
             const user = userCredential.user;
             console.log(user);
+            updateProfile(auth.currentUser, {
+                photoURL: 'https://i.ibb.co/mBz67t6/User-Default-Image.png',
+            }).then(() => {
+                console.log('profile updated');
+                setDoc(doc(db, 'users', user.uid), {
+                    email: email,
+                    username: username,
+                    firstName: firstName,
+                    lastName: lastName,
+                    dateOfBirth: dateOfBirth,
+                    phoneNumber: phoneNumber,
+                    photoURL: 'https://i.ibb.co/mBz67t6/User-Default-Image.png',
+                    bio: '',
+                    website: '',
+                    private: false,
+                    followers: [],
+                    following: [],
+                }).then(() => {
+                    console.log('user added to database');
+                }
+                ).catch((error) => {
+                    console.log(error);
+                }
+                );
+            }).catch((error) => {
+                console.log(error);
+            }
+            ).catch((error) => {
+                console.log(error);
+            });
+            navigate('/');
         }) 
         .catch((error) => {
             const errorCode = error.code;
@@ -91,7 +127,7 @@ const SignUp = () => {
                         <label className="signup-form-label-dob">Date of Birth</label>
                         <input className="signup-form-input-dob" type='date' id='date-of-birth' placeholder="Enter your date of birth..." value={dateOfBirth} onChange={(e) => setDateOfBirth(e.target.value)} required/>
                         <label className="signup-form-label-pn">Phone Number</label>
-                        <input className="signup-form-input-pn" type='tel' id='phone-number' placeholder="Enter your phone number..." value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} required maxLength={12} pattern="[0-9]{3} [0-9]{3} [0-9]{4}"/>
+                        <input className="signup-form-input-pn" type='tel' id='phone-number' placeholder="Enter your phone number..." value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} required maxLength={12}/>
                         <div className="signup-form-password-container">
                             <label className="signup-form-label-password">Password</label>
                             <input className="signup-form-input-password" type='password' id='password' placeholder="Enter your password..." value={password} onChange={(e) => setPassword(e.target.value)} required/>
