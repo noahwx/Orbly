@@ -71,6 +71,7 @@ const SignUp = () => {
                     private: false,
                     followers: [],
                     following: [],
+                    posts: 0,
                 }).then(() => {
                     console.log('user added to database');
                 }

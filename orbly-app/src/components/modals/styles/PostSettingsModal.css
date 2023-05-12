@@ -1,0 +1,186 @@
+.post-settings-modal-background {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 200;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.post-settings-modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 3000;
+    width: 20em;
+    height: 32.2em;
+    background-color: var(--background);
+    border: 1px solid var(--border);
+    border-radius: 0.5em;
+    overflow: hidden;
+}
+
+.post-settings-modal-null {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 3000;
+    width: 20em;
+    height: 29em;
+    background-color: var(--background);
+    border: 1px solid var(--border);
+    border-radius: 0.5em;
+    overflow: hidden;
+}
+
+.post-settings-modal-items {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.post-settings-modal-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 2em;
+    padding: 0.5em;
+    font-size: 1.2em;
+    color: var(--text);
+    cursor: pointer;
+    border-top: 1px solid var(--border);
+    transition: all 0.2s ease-in-out;
+}
+
+.post-settings-modal-item-cancel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 2em;
+    padding: 0.5em;
+    font-size: 1.2em;
+    color: var(--text);
+    cursor: pointer;
+    border-top: 1px solid var(--border);
+    transition: all 0.2s ease-in-out;
+}
+
+.post-settings-modal-item-cancel:hover {
+    background-color: var(--background-hover);
+    color: var(--error);
+}
+
+.post-settings-modal-item:hover {
+    background-color: var(--background-hover);
+}
+
+.warning {
+    color: var(--error);
+}
+
+.post-settings-delete-confirm-modal-background {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 200;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.post-settings-delete-confirm-modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 3000;
+    width: 15em;
+    height: 12em;
+    background-color: var(--background);
+    border: 1px solid var(--border);
+    border-radius: 0.5em;
+    overflow: hidden;
+}
+
+.post-settings-delete-confirm-modal-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 2em;
+    width: 100%;
+    height: 2em;
+    padding: 0.5em;
+    font-size: 1.2em;
+    color: var(--text);
+}
+
+.post-settings-delete-confirm-modal-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 2em;
+    width: 100%;
+    height: 2em;
+}
+
+.post-settings-delete-confirm-modal-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 6em;
+    height: 2em;
+    margin: 0 0.5em;
+    padding: 0.5em;
+    font-size: 1.2em;
+    color: var(--error);
+    cursor: pointer;
+    border: 1px solid var(--border);
+    background: none;
+    border-radius: 0.5em;
+    transition: all 0.2s ease-in-out;
+}
+
+.post-settings-delete-confirm-modal-button:hover {
+    background-color: var(--background-hover);
+}
+
+.post-settings-delete-confirm-modal-button-cancel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 6em;
+    height: 2em;
+    margin: 0 0.5em;
+    padding: 0.5em;
+    font-size: 1.2em;
+    color: var(--text);
+    cursor: pointer;
+    border: 1px solid var(--border);
+    background: none;
+    border-radius: 0.5em;
+    transition: all 0.2s ease-in-out;
+}
+
+.post-settings-delete-confirm-modal-button-cancel:hover {
+    background-color: var(--background-hover);
+}

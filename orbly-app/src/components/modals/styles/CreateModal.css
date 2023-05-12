@@ -1,0 +1,192 @@
+.create-modal-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 200;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.create-modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 3000;
+    width: 30em;
+    height: 25em;
+    background-color: var(--background);
+    border: 1px solid var(--border);
+    border-radius: 0.5em;
+    overflow: hidden;
+}
+
+.create-modal-close {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0.2em;
+    right: 0.5em;
+    z-index: 202;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    color: var(--text);
+}
+
+.create-modal-close:hover {
+    cursor: pointer;
+    color: var(--error);
+}
+
+.create-modal-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0.3em;
+    width: 100%;
+    height: 1em;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text);
+    border-bottom: 2px solid var(--border);
+}
+
+.create-modal-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    position: absolute;
+    top: 2.5em;
+    left: 1em;
+    width: 90%;
+}
+
+.create-modal-label {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    top: 0.2em;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+    padding-bottom: 0.2em;
+}
+
+.create-modal-input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 2.5em;
+    margin: 0.5em 0;
+    padding: 0.5em;
+    font-size: 1rem;
+    color: var(--text);
+    border: 2px solid var(--border);
+    border-radius: 0.5em;
+    outline: none;
+    background: none;
+}
+
+.create-modal-textarea {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 5em;
+    margin: 0.5em 0;
+    padding: 0.5em;
+    font-size: 1rem;
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 0.5em;
+    outline: none;
+    resize: none;
+    background: none;
+}
+
+.create-modal-button-create {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    left: 14em;
+    transform: translateX(-50%);
+    width: 105%;
+    height: 2.5em;
+    margin-top: 1em;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+    border: 2px solid var(--border);
+    border-radius: 0.5em;
+    outline: none;
+    background: none;
+}
+
+.create-modal-button-create:hover {
+    cursor: pointer;
+    background-color: var(--background-hover);
+}
+
+.create-modal-button-cancel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    left: 14em;
+    transform: translateX(-50%);
+    width: 105%;
+    height: 2.5em;
+    margin-top: 1em;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+    border: 2px solid var(--border);
+    border-radius: 0.5em;
+    outline: none;
+    background: none;
+}
+
+.create-modal-button-cancel:hover {
+    cursor: pointer;
+    color: var(--error);
+    background-color: var(--background-hover);
+}
+
+.open {
+    animation: open 0.3s ease-in-out;
+}
+
+@keyframes open {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.close {
+    animation: close 0.3s ease-in-out;
+}
+
+@keyframes close {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0);
+    }
+}

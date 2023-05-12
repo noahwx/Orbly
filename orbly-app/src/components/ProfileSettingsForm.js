@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { collection, doc, getDocs, updateDoc } from "firebase/firestore";
+import { collection, doc, getDocs, query, updateDoc, where, writeBatch } from "firebase/firestore";
 import { db } from "../firebase";
 import { updateProfile, getAuth } from "firebase/auth";
 
@@ -56,6 +56,20 @@ const ProfileSettingsForm = ({
             website: website ? website : currentWebsite,
         }).then(() => {
             console.log('user data updated');
+        }).catch((error) => {
+            console.log(error);
+        });
+        const batch = writeBatch(db);
+        const postRef = collection(db, "posts");
+        const q = query(postRef, where("postAuthor", "==", uid));
+        const querySnapshot = await getDocs(q);
+        querySnapshot.forEach((doc) => {
+            batch.update(doc.ref, {
+                postUsername: username ? username : authUser?.displayName,
+            });
+        });
+        await batch.commit().then(() => {
+            console.log('user posts updated');
         }).catch((error) => {
             console.log(error);
         });

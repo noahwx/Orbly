@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
-import MenuSettingsModal from "./MenuSettingsModal";
 import HomeDark from "../Assets/HomeDark.svg";
 import HomeLight from "../Assets/HomeLight.svg";
 import CompassDark from "../Assets/CompassDark.svg";
@@ -13,6 +12,8 @@ import CreateDark from "../Assets/CreateDark.svg";
 import CreateLight from "../Assets/CreateLight.svg";
 import MenuDark from "../Assets/MenuDark.svg";
 import MenuLight from "../Assets/MenuLight.svg";
+import MenuModal from "./modals/MenuModal";
+import CreateModal from "./modals/CreateModal";
 import './styles/Menu.css';
 
 const Menu = ({
@@ -20,29 +21,52 @@ const Menu = ({
     toggleTheme,
     theme,
     authUser,
+    auth,
 }) => {
 
-    const [isOpen, setIsOpen] = React.useState(false);
+    const [openMenu, setOpenMenu] = useState(false);
+    const openMenuRef = useRef(null);
 
-    const isOpenRef = React.useRef(isOpen);
-
-    const handleMenuSettings = () => {
-        setIsOpen(!isOpen);
+    const handleOpenMenu = () => {
+        setOpenMenu(!openMenu);
     }
 
-    const handleOutsideClick = (e) => {
-        (isOpenRef.current && !e.target.closest('.menu')) && setIsOpen(false);
-    }
+    useEffect(() => {
 
-    React.useEffect(() => {
+        const handleOutsideClick = (e) => {
+            if(openMenuRef.current && openMenu && !openMenuRef.current.contains(e.target)){
+                setOpenMenu(false)
+            }
+        }
+
         document.addEventListener('mousedown', handleOutsideClick);
+        return () => {
+            document.removeEventListener('mousedown', handleOutsideClick);
+        }
+    }, [openMenuRef, openMenu]);
 
+    const [openCreate, setOpenCreate] = useState(false);
+    const openCreateRef = useRef(null);
+
+    const handleOpenCreate = () => {
+        setOpenCreate(!openCreate);
+    }
+
+    useEffect(() => {
+
+        const handleOutsideClick = (e) => {
+            if(openCreateRef.current && openCreate && !openCreateRef.current.contains(e.target)){
+                setOpenCreate(false)
+            }
+        }
+
+        document.addEventListener('mousedown', handleOutsideClick);
         return () => {
             document.removeEventListener('mousedown', handleOutsideClick);
         }
 
-    }, []);
-
+    }, [openCreateRef, openCreate]);
+    
     return ( 
         <div className="menu">
             <NavLink to="/home" className='menu-title'>
@@ -101,7 +125,7 @@ const Menu = ({
                         </div>
                     }
                 </NavLink>
-                <div className='menu-item create-button'>
+                <div className='menu-item create-button' onClick={() => handleOpenCreate()}>
                     {theme === 'light' ?
                         <div>
                             <img src={CreateDark} alt="dark mode" className="menu-settings-apperance-image"/>
@@ -114,9 +138,9 @@ const Menu = ({
                         </div>
                     }
                 </div>
-                <NavLink to="/profile" className='menu-item'>
+                <NavLink to={`/${authUser?.displayName}`} className='menu-item'>
                     <div>
-                        <img src={authUser?.photoURL} alt="profile" 
+                        <img src={auth.currentUser?.photoURL} alt="profile" 
                             style={{
                                 position: 'relative',
                                 top: '5px',
@@ -133,7 +157,7 @@ const Menu = ({
                 </NavLink>
             </div>
             <div className="menu-settings">
-                <button className='menu-item-settings' onClick={() => handleMenuSettings()}>
+                <button className='menu-item-settings' onClick={() => handleOpenMenu()}>
                     {theme === 'light' ?
                         <div>
                             <img src={MenuDark} alt="dark mode" className="menu-settings-apperance-image"/>
@@ -147,13 +171,30 @@ const Menu = ({
                     }
                 </button>
             </div>
-            <MenuSettingsModal 
-                isOpen={isOpen}
-                isOpenRef={isOpenRef}
-                handleSignOut={handleSignOut}
-                toggleTheme={toggleTheme}
-                theme={theme}
-            />
+            {openMenu ?
+                <MenuModal 
+                    openMenuRef={openMenuRef}
+                    handleOpenMenu={handleOpenMenu}
+                    openMenu={openMenu}
+                    theme={theme}
+                    toggleTheme={toggleTheme}
+                    handleSignOut={handleSignOut}
+                    authUser={authUser}
+                />
+            :
+                null
+            }
+            {openCreate ?
+                <CreateModal 
+                    openCreateRef={openCreateRef}
+                    handleOpenCreate={handleOpenCreate}
+                    openCreate={openCreate}
+                    authUser={authUser}
+                    auth={auth}
+                />
+            :
+                null
+            }
         </div>
     );
 }

@@ -19,6 +19,7 @@ const SignIn = () => {
             const user = userCredential.user;
             console.log(user.uid);
             window.sessionStorage.setItem('user', JSON.stringify(user.uid));
+            window.sessionStorage.setItem('username', JSON.stringify(user.displayName));
             navigation('/home');
         }) 
         .catch((error) => {
