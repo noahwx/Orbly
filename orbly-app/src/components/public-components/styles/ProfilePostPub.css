@@ -1,0 +1,110 @@
+.public-profile-post-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 22em;
+    left: 5em;
+    width: 70%;
+    height: 100%;
+}
+
+.public-profile-post-container-null {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 22em;
+    left: 12em;
+    width: 70%;
+    height: 100%;
+}
+
+.public-no-posts {
+    position: absolute;
+    top: 20%;
+    left: 35%;
+    transform: translateX(-50%);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    opacity: 0.5;
+}
+
+.public-profile-post {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.public-user-post {
+    position: relative;
+    float: left;
+    width: 20em;
+    height: 20em;
+    margin: 1em;
+    overflow: hidden;
+}
+
+.public-user-post-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 30s ease;
+}
+
+.public-post-overlay {
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: 0.5s ease;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.public-post-overlay-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.public-post-overlay-likes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0.5em;
+    color: var(--white);
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: left;
+}
+
+.public-post-overlay-comments {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 0.5em;
+    color: var(--white);
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: left;
+}
+
+.public-user-post:hover > .public-post-overlay {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.public-user-post:hover > .public-user-post-image {
+    transform: scale(2);
+}
+
+.public-user-post:hover > .public-post-overlay {
+    opacity: 1;
+}

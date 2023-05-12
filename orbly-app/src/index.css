@@ -6,6 +6,11 @@
     padding: 0;
 }
 
+body {
+    background: var(--background);
+    color: var(--text);
+}
+
 :root {
     --primary-color: #FFFC31;
     --white: #FFFFF8;
@@ -23,7 +28,6 @@
     --text: var(--black);
     --text-secondary: var(--grey);
     --text-tertiary: var(--dark-grey);
-    --error: var(--error);
     --success: var(--success);
     --border: rgba(0, 0, 0, 0.1);
     --background-active: var(--light-grey);
@@ -35,7 +39,6 @@
     --text: var(--white);
     --text-secondary: var(--grey);
     --text-tertiary: var(--dark-grey);
-    --error: var(--error);
     --success: var(--success);
     --border: rgba(255, 255, 255, 0.1);
     --background-active: var(--light-grey);

@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import Menu from "../components/Menu";
+import HomeFeed from "../components/HomeFeed";
 import './styles/Home.css';
 
 const Home = ({
     toggleTheme,
     theme,
+    posts,
+    handlePostLiked,
 }) => {
 
     const auth = getAuth();
@@ -32,9 +35,12 @@ const Home = ({
         });
     }
 
+    useEffect(() => {
+        document.title = 'Orbly';
+    }, []);
+
     return ( 
         <div className='home'>
-            <h1>Home</h1>
             <Menu 
                 auth={auth}
                 authUser={authUser}
@@ -42,7 +48,13 @@ const Home = ({
                 toggleTheme={toggleTheme}
                 theme={theme}
             />
-            {authUser ? <button onClick={() => handleSignOut()}>Sign Out</button> : null}
+            <HomeFeed 
+                auth={auth}
+                authUser={authUser}
+                posts={posts}
+                theme={theme}
+                handlePostLiked={handlePostLiked}
+            />
         </div>
     );
 }

@@ -1,14 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { getFirestore, doc, onSnapshot } from "firebase/firestore";
 import Menu from "../components/Menu";
 import ProfileStats from "../components/ProfileStats";
-import ChangeProfilePicModal from "../components/ChangeProfilePicModal";
+import ProfilePosts from "../components/ProfilePost";
 import "./styles/Profile.css";
 
 const Profile = ({
     toggleTheme,
     theme,
+    handleCreatePost,
+    posts,
+    handlePostLiked,
 }) => {
     
     const navigate = useNavigate();
@@ -46,12 +50,32 @@ const Profile = ({
         }
     }
 
-    React.useEffect(() => {
+    useEffect(() => {
         document.addEventListener("mousedown", handleOutsideClick);
         return () => {
             document.removeEventListener("mousedown", handleOutsideClick);
         };
     });
+
+    const uid = sessionStorage.getItem("user").replace(/['"]+/g, '');
+    
+    const [user, setUser] = React.useState([]);
+
+    React.useEffect(() => {
+        const db = getFirestore();
+        const userRef = doc(db, "users", uid);
+        onSnapshot(userRef, (doc) => {
+        if (doc.exists()) {
+            setUser(doc.data());
+        } else {
+            console.log("No such document!");
+        }
+        });
+    }, [uid]);
+
+    useEffect(() => {
+        document.title = `Orbly - ${authUser?.displayName}`;
+    }, [ authUser ]);
 
     return ( 
         <div className='profile'>
@@ -61,18 +85,22 @@ const Profile = ({
                 handleSignOut={handleSignOut}
                 toggleTheme={toggleTheme}
                 theme={theme}
+                handleCreatePost={handleCreatePost}
             />
             <ProfileStats 
                 auth={auth}
                 authUser={authUser}
                 handleChangeProfile={handleChangeProfile}
+                posts={posts}
+                user={user}
             />
-            <ChangeProfilePicModal 
+            <ProfilePosts 
                 auth={auth}
-                changeProfile={changeProfile}
-                setChangeProfile={setChangeProfile}
-                changeProfileRef={changeProfileRef}
-                handleChangeProfile={handleChangeProfile}
+                authUser={authUser}
+                posts={posts}
+                user={user}
+                handlePostLiked={handlePostLiked}
+                theme={theme}
             />
         </div>
     );
