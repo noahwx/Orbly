@@ -1,5 +1,5 @@
 import React from "react";
-import { arrayUnion, doc, updateDoc, where, query, onSnapshot, collection, arrayRemove } from "@firebase/firestore";
+import { arrayUnion, doc, updateDoc, where, query, onSnapshot, collection } from "@firebase/firestore";
 import { db } from "../../firebase";
 import "./styles/ProfileStatsPub.css";
 
@@ -28,24 +28,24 @@ const ProfileStatsPub = ({
     
     }
 
-    const handleUnfollow = (publicUser) => {
+    // const handleUnfollow = (publicUser) => {
 
-        const userRef = doc(db, 'users', authUser.uid);
-        updateDoc(userRef, {
-          following: arrayRemove(publicUser[0].username),
-        });
+    //     const userRef = doc(db, 'users', authUser.uid);
+    //     updateDoc(userRef, {
+    //       following: arrayRemove(publicUser[0].username),
+    //     });
     
-        const publicUserRef = collection(db, 'users');
-        const q = query(publicUserRef, where("username", "==", publicUser[0].username));
-        onSnapshot(q, (snapshot) => {
-          const puSnap = snapshot.docs[0];
-          const puRef = puSnap.ref;
-          updateDoc(puRef, {
-            followers: arrayRemove(window.sessionStorage.getItem('username').replace(/['"]+/g, '')),
-          });
-        });
+    //     const publicUserRef = collection(db, 'users');
+    //     const q = query(publicUserRef, where("username", "==", publicUser[0].username));
+    //     onSnapshot(q, (snapshot) => {
+    //       const puSnap = snapshot.docs[0];
+    //       const puRef = puSnap.ref;
+    //       updateDoc(puRef, {
+    //         followers: arrayRemove(window.sessionStorage.getItem('username').replace(/['"]+/g, '')),
+    //       });
+    //     });
     
-    }
+    // }
 
     return ( 
         <div className="public-profile-stats">
