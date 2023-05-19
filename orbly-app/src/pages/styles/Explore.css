@@ -3,9 +3,10 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100%;
-    width: 100%;
+    height: 100vh;
+    width: 100vw;
     background-color: var(--background);
+    overflow: hidden;
 }
 
 .explore-post-area {
@@ -18,6 +19,7 @@
     left: 7em;
     width: 70%;
     height: 100%;
+    overflow-y: scroll;
 }
 
 .explore-post {
@@ -108,4 +110,15 @@
     font-size: 1em;
     font-weight: 400;
     color: var(--text);
+}
+
+@media screen and (min-width: 1920px) {
+    .explore-post-area {
+        left: 12em;
+        width: 80%;
+    }
+
+    .explore-header {
+        left: 18em;
+    }
 }

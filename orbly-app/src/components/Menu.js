@@ -22,6 +22,7 @@ const Menu = ({
     theme,
     authUser,
     auth,
+    notifications,
 }) => {
 
     const [openMenu, setOpenMenu] = useState(false);
@@ -115,13 +116,28 @@ const Menu = ({
                 <NavLink to="/notifications" className='menu-item'>
                     {theme === 'light' ?
                         <div>
-                            <img src={NotificationDark} alt="dark mode" className="menu-settings-apperance-image"/>
-                            Notifications
+                            <img src={NotificationDark} alt="dark mode" className="menu-settings-apperance-image" 
+                                style={{
+                                    filter: notifications.length > 0 ? 
+                                        'invert(36%) sepia(48%) saturate(2074%) hue-rotate(323deg) brightness(87%) contrast(96%)' 
+                                    : 
+                                        'invert(0)',
+                                }}
+                            />
+                            Notifications {notifications.length > 0 ? `(${notifications.length})` : ''}
                         </div>
                     :
                         <div>
-                            <img src={NotificationLight} alt="light mode" className="menu-settings-apperance-image"/>
-                            Notifications
+                            <img src={NotificationLight} alt="light mode" className="menu-settings-apperance-image"
+                                style={{
+                                    filter: notifications.length > 0 ? 
+                                        'invert(36%) sepia(48%) saturate(2074%) hue-rotate(323deg) brightness(87%) contrast(96%)' 
+                                    : 
+                                        'invert(0)',
+                                    animation: notifications.length > 0 ? 'pulse 5s infinite' : 'none',
+                                }}
+                            />
+                            Notifications {notifications.length > 0 ? `(${notifications.length})` : ''}
                         </div>
                     }
                 </NavLink>

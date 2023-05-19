@@ -117,3 +117,31 @@
     font-weight: 400;
     color: var(--text);
 }
+
+.public-profile-stats-container-header-follow-button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: -0.2em;
+    right: 0;
+    width: 5em;
+    height: 2em;
+    border: 2px solid var(--border);
+    border-radius: 1em;
+    background-color: var(--background);
+    color: var(--text);
+}
+
+.public-profile-stats-container-header-follow-button:hover {
+    cursor: pointer;
+    background-color: var(--background-hover);
+}
+
+@media screen and (min-width: 1920px) {
+    .public-profile-stats-container-header-image {
+        top: -6em;
+        left: 33em;
+    }
+}

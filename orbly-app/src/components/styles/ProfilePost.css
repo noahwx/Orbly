@@ -95,3 +95,9 @@
 .user-post:hover > .user-post-overlay-text {
     opacity: 1;
 }
+
+@media screen and (min-width: 1920px) {
+    .profile-post-container {
+        left: 18em;
+    }
+}

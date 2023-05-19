@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../firebase";
+import { auth, db } from "../../firebase";
 import { useNavigate } from "react-router-dom";
+import { updateDoc, doc } from "firebase/firestore";
 import logo from '../../Assets/logo.svg';
+import PasswordVisibilityDark from '../../Assets/PasswordVisibilityDark.svg';
+import PasswordVisibilityHiddenDark from '../../Assets/PasswordVisibilityHiddenDark.svg';
 import './styles/SignIn.css';
 
 const SignIn = () => {
@@ -11,6 +14,7 @@ const SignIn = () => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [passwordShown, setPasswordShown] = useState(false);
 
     const signIn = (e) => {
         e.preventDefault();
@@ -18,9 +22,24 @@ const SignIn = () => {
         .then((userCredential) => {
             const user = userCredential.user;
             console.log(user.uid);
-            window.sessionStorage.setItem('user', JSON.stringify(user.uid));
-            window.sessionStorage.setItem('username', JSON.stringify(user.displayName));
-            navigation('/home');
+            if (user.emailVerified === false) {
+                alert('Please verify your email.');
+                return;
+            } else if (user.emailVerified === true) {
+                console.log('email verified');
+                window.sessionStorage.setItem('user', JSON.stringify(user.uid));
+                window.sessionStorage.setItem('username', JSON.stringify(user.displayName));
+                updateDoc(doc(db, 'users', user.uid), {
+                    emailVerified: true,
+                }).then(() => {
+                    console.log('email verified');
+                }).catch((error) => {
+                    console.log(error);
+                });
+                navigation('/home');
+            } else {
+                console.log('email not verified');
+            }
         }) 
         .catch((error) => {
             const errorCode = error.code;
@@ -60,7 +79,10 @@ const SignIn = () => {
                         <label className="signin-label-email">Email</label>
                         <input className="signin-input-email" type='email' id='email' placeholder="Enter your email..." value={email} onChange={(e) => setEmail(e.target.value)}/>
                         <label className="signin-label-password">Password</label>
-                        <input className="signin-input-password" type='password' id='password' placeholder="Enter your password..." value={password} onChange={(e) => setPassword(e.target.value)}/>
+                        <button className="signin-password-toggle" type="button" onClick={() => setPasswordShown(!passwordShown)}>
+                            <img src={passwordShown ? PasswordVisibilityDark : PasswordVisibilityHiddenDark} alt="password-visibility" className="signin-password-visibility"/>
+                        </button>
+                        <input className="signin-input-password" type={passwordShown ? "text" : "password"} id='password' placeholder="Enter your password..." value={password} onChange={(e) => setPassword(e.target.value)}/>
                     </div>
                     <button type="submit" className="signin-button">Sign In</button>
                 </form>

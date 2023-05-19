@@ -113,6 +113,17 @@
     text-align: left;
 }
 
+.post-modal-content-body-text strong {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.post-modal-content-body-text strong:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}
+
 .post-modal-content-body-text {
     position: relative;
     z-index: 100;
@@ -137,9 +148,32 @@ strong:hover {
     align-items: center;
     position: absolute;
     top: 10em;
+    z-index: 1000;
     width: 100%;
     height: 20em;
     border-bottom: 1px solid var(--border);
+}
+
+.post-modal-content-body-comment {
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+    left: 0.2em;
+    width: 100%;
+    height: 1em;
+}
+
+.post-modal-username-strong {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text);
+    padding-right: 0.5em;
+}
+
+.post-modal-content-body-comment-text {
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--text);
 }
 
 .post-modal-content-body-action-info {
@@ -258,14 +292,94 @@ strong:hover {
     width: 20%;
     height: 100%;
     font-size: 1rem;
-    font-weight: 400;
+    font-weight: 600;
     color: var(--text);
     border: none;
     outline: none;
     background: none;
 }
 
+.post-modal-comment-input-characters {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    position: absolute;
+    top: -1.1em;
+    right: 1em;
+    width: 100%;
+    height: 3em;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
 .post-modal-content-body-action-post-comment-button:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes shake {
+    0% {
+        transform: translate(1px, 1px) rotate(0deg);
+    }
+    10% {
+        transform: translate(-1px, -2px) rotate(-1deg);
+    }
+    20% {
+        transform: translate(-3px, 0px) rotate(1deg);
+    }
+    30% {
+        transform: translate(3px, 2px) rotate(0deg);
+    }
+    40% {
+        transform: translate(1px, -1px) rotate(1deg);
+    }
+    50% {
+        transform: translate(-1px, 2px) rotate(-1deg);
+    }
+    60% {
+        transform: translate(-3px, 1px) rotate(0deg);
+    }
+    70% {
+        transform: translate(3px, 1px) rotate(-1deg);
+    }
+    80% {
+        transform: translate(-1px, -1px) rotate(1deg);
+    }
+    90% {
+        transform: translate(1px, 2px) rotate(0deg);
+    }
+    100% {
+        transform: translate(0px, 0px) rotate(0deg);
+    }
+}
+
+.post-modal-comment-delete-btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    position: absolute;
+    top: -0.5em;
+    right: 1em;
+    width: 3em;
+    height: 2em;
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+}
+
+.post-modal-comment-delete-btn:hover {
     cursor: pointer;
     opacity: 0.7;
 }

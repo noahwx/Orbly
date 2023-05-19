@@ -49,7 +49,7 @@
 .menu-item {
     position: relative;
     z-index: 101;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 500;
     color: var(--text);
     margin: 0.5em;
@@ -179,4 +179,19 @@
     position: relative;
     top: -0.3em;
     left: -0.5em;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1) rotate(0deg);
+    } 
+    50% {
+        transform: scale(1.1) rotate(10deg);
+    }
+    75% {
+        transform: scale(1.1) rotate(-10deg);
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
+    }
 }

@@ -21,6 +21,8 @@ body {
     --dark-grey: #312F2F;
     --error: #DA3E52;
     --success: #63E979;
+    --receiver: #3F88C5;
+    --sender: #969696;
 }
 
 .light {

@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { doc, updateDoc, arrayUnion } from "firebase/firestore";
+import { doc, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
 import { db } from "../../firebase";
 import PostMenuDark from "../../Assets/PostMenuDark.svg";
 import PostMenuLight from "../../Assets/PostMenuLight.svg";
@@ -20,6 +20,7 @@ const PostModal = ({
     selectedPost,
     theme,
     setOpenPostModal,
+    authUser,
 }) => {
 
     const navigate = useNavigate();
@@ -29,6 +30,37 @@ const PostModal = ({
         updateDoc(postRef, {
             postLikes: arrayUnion(window.sessionStorage.getItem('username').replace(/['"]+/g, '')),
         });
+    }
+
+    const [comment, setComment] = useState('');
+    // const [currentComments, setCurrentComments] = useState([]);
+
+    const handleComment = (selectedPost, e) => {
+        e.preventDefault();
+        const postRef = doc(db, 'posts', selectedPost.postID);
+        updateDoc(postRef, {
+            postComments: arrayUnion({
+                commentUser: window.sessionStorage.getItem('username').replace(/['"]+/g, ''),
+                commentUserImage: authUser.photoURL,
+                commentContent: comment,
+                commentDate: new Date(),
+            }),
+        });
+    }
+
+    const handleCommentDelete = (selectedPost, comment, e) => {
+        e.preventDefault();
+        const postRef = doc(db, 'posts', selectedPost.postID);
+        updateDoc(postRef, {
+            postComments: arrayRemove(comment),
+        });
+    }
+
+    const [commentCount, setCommentCount] = useState(0);
+
+    const inputRef = React.useRef(null);
+    const handleCommentFocus = () => {
+        inputRef.current.focus();
     }
 
     return ( 
@@ -54,7 +86,17 @@ const PostModal = ({
                                     <strong className="username-strong" onClick={() => {navigate(`/${selectedPost.postUsername}`); window.location.reload(true);}}>{selectedPost.postUsername}</strong> {selectedPost.postText}
                                 </p>
                                 <div className="post-modal-content-body-comments">
-
+                                    {selectedPost.postComments.sort((a, b) => b.commentDate - a.commentDate).map((comment, index) => (
+                                        <div className="post-modal-content-body-comment" key={index}>
+                                            <strong className="post-modal-username-strong" onClick={() => {navigate(`/${comment.commentUser}`); window.location.reload(true);}}>{comment.commentUser}</strong>
+                                            <p className="post-modal-content-body-comment-text">
+                                                {comment.commentContent.length > 30 ? comment.commentContent.substring(0, 30) + '...' : comment.commentContent}
+                                            </p>
+                                            {authUser?.displayName === comment.commentUser && (
+                                                <button className="post-modal-comment-delete-btn" onClick={(e) => handleCommentDelete(selectedPost, comment, e)}>Delete</button>
+                                            )}
+                                        </div>
+                                    ))}
                                 </div>
                                 <div className="post-modal-content-body-action-info">
                                     <div className="post-modal-content-body-action-bar">
@@ -79,9 +121,9 @@ const PostModal = ({
                                                 />
                                             }
                                             {theme === 'light' ?
-                                                <img src={CommentDark} alt="comment" className="post-modal-content-body-action-bar-icon" />
+                                                <img src={CommentDark} alt="comment" className="post-modal-content-body-action-bar-icon" onClick={() => handleCommentFocus()}/>
                                             :
-                                                <img src={CommentLight} alt="comment" className="post-modal-content-body-action-bar-icon" />
+                                                <img src={CommentLight} alt="comment" className="post-modal-content-body-action-bar-icon" onClick={() => handleCommentFocus()}/>
                                             }
                                             {theme === 'light' ?
                                                 <img src={ShareDark} alt="share" className="post-modal-content-body-action-bar-icon" />
@@ -101,10 +143,20 @@ const PostModal = ({
                                         <p className="post-modal-content-body-action-post-info-likes">{selectedPost.postLikes.length} likes</p>
                                         <p className="post-modal-content-body-action-post-info-date">{selectedPost.postDate.toDate().toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric' })}</p>
                                     </div>
-                                    <div className="post-modal-content-body-action-post-comment">
-                                        <input type="text" placeholder="Add a comment..." className="post-modal-content-body-action-post-comment-input" />
-                                        <button className="post-modal-content-body-action-post-comment-button">Post</button>
-                                    </div>
+                                    <form className="post-modal-content-body-action-post-comment" onSubmit={(e) => handleComment(selectedPost, e)}>
+                                        <input type="text" placeholder="Add a comment..." className="post-modal-content-body-action-post-comment-input" maxLength={50} value={comment} onChange={(e) => {setComment(e.target.value); setCommentCount(e.target.value.length);}} ref={inputRef}/>
+                                        <button className="post-modal-content-body-action-post-comment-button" type="submit" onClick={(e) => handleComment(selectedPost, e)}>Post</button>
+                                        {commentCount > 25 ? (
+                                            <p className="post-modal-comment-input-characters"
+                                                style={{
+                                                    color: commentCount < 40 ? 'var(--text-secondary)' : 'var(--error)',
+                                                    animation: commentCount === 25 ? 'none' : 'fadeIn forwards 0.5s' ? commentCount === 50 ? 'shake forwards 0.5s' : 'none': 'none',
+                                                }}
+                                            >{commentCount}/50</p>
+                                        ) : (
+                                            null
+                                        )}
+                                    </form>
                                 </div>
                             </div>
                         </div>

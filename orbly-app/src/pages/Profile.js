@@ -13,6 +13,7 @@ const Profile = ({
     handleCreatePost,
     posts,
     handlePostLiked,
+    notifications,
 }) => {
     
     const navigate = useNavigate();
@@ -74,8 +75,8 @@ const Profile = ({
     }, [uid]);
 
     useEffect(() => {
-        document.title = `Orbly - ${authUser?.displayName}`;
-    }, [ authUser ]);
+        document.title = `Orbly - ${authUser?.displayName} ${notifications.length > 0 ? `(${notifications.length})` : ''}`;
+    }, [ authUser, notifications ]);
 
     return ( 
         <div className='profile'>
@@ -86,6 +87,7 @@ const Profile = ({
                 toggleTheme={toggleTheme}
                 theme={theme}
                 handleCreatePost={handleCreatePost}
+                notifications={notifications}
             />
             <ProfileStats 
                 auth={auth}

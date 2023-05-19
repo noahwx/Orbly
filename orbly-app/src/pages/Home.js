@@ -1,15 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import Menu from "../components/Menu";
 import HomeFeed from "../components/HomeFeed";
 import './styles/Home.css';
+import FollowRec from "../components/FollowRec";
 
 const Home = ({
     toggleTheme,
     theme,
     posts,
     handlePostLiked,
+    handleFollow,
+    publicUser,
+    handleUnfollow,
+    handlePostUnliked,
+    notifications,
 }) => {
 
     const auth = getAuth();
@@ -36,8 +42,8 @@ const Home = ({
     }
 
     useEffect(() => {
-        document.title = 'Orbly';
-    }, []);
+        document.title = `Orbly ${notifications.length > 0 ? `(${notifications.length})` : ''}`;
+    }, [notifications]);
 
     return ( 
         <div className='home'>
@@ -47,6 +53,7 @@ const Home = ({
                 handleSignOut={handleSignOut}
                 toggleTheme={toggleTheme}
                 theme={theme}
+                notifications={notifications}
             />
             <HomeFeed 
                 auth={auth}
@@ -54,6 +61,15 @@ const Home = ({
                 posts={posts}
                 theme={theme}
                 handlePostLiked={handlePostLiked}
+                handlePostUnliked={handlePostUnliked}
+            />
+            <FollowRec 
+                auth={auth}
+                authUser={authUser}
+                theme={theme}
+                handleFollow={handleFollow}
+                publicUser={publicUser}
+                handleUnfollow={handleUnfollow}
             />
         </div>
     );

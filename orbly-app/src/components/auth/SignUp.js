@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, sendEmailVerification, updateProfile } from "firebase/auth";
 import { auth } from "../../firebase";
 import { useNavigate } from "react-router-dom";
 import { setDoc, doc } from "firebase/firestore";
 import { db } from "../../firebase";
 import logo from '../../Assets/logo.svg';
+import PasswordVisibilityDark from '../../Assets/PasswordVisibilityDark.svg';
+import PasswordVisibilityHiddenDark from '../../Assets/PasswordVisibilityHiddenDark.svg';
 import './styles/SignUp.css';
 
 const SignUp = () => {
@@ -56,6 +58,7 @@ const SignUp = () => {
             console.log(user);
             updateProfile(auth.currentUser, {
                 photoURL: 'https://i.ibb.co/mBz67t6/User-Default-Image.png',
+                displayName: username,
             }).then(() => {
                 console.log('profile updated');
                 setDoc(doc(db, 'users', user.uid), {
@@ -68,11 +71,19 @@ const SignUp = () => {
                     photoURL: 'https://i.ibb.co/mBz67t6/User-Default-Image.png',
                     bio: '',
                     website: '',
-                    private: false,
                     followers: [],
                     following: [],
                     posts: 0,
+                    private: false,
+                    userVerified: false,
+                    emailVerified: false,
+                    notifications: [],
                 }).then(() => {
+                    sendEmailVerification(auth.currentUser).then(() => {
+                        console.log('email verification sent');
+                    }).catch((error) => {
+                        console.log(error);
+                    });
                     console.log('user added to database');
                 }
                 ).catch((error) => {
@@ -107,10 +118,13 @@ const SignUp = () => {
         });
     }
 
+    const [passwordVisibility, setPasswordVisibility] = useState(false);
+    const [confirmPasswordVisibility, setConfirmPasswordVisibility] = useState(false);
+
     return ( 
         <div className='signup'>
             <div className="signup-logo">
-                <img src={logo} alt="Orbly Logo"/>
+                <img src={logo} alt="Orbly Logo" onClick={() => navigate('/')}/>
             </div>
             <div className='signup-form-container' id="form-container">
                 <form onSubmit={signUp} className='signup-form'>
@@ -131,9 +145,15 @@ const SignUp = () => {
                         <input className="signup-form-input-pn" type='tel' id='phone-number' placeholder="Enter your phone number..." value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} required maxLength={12}/>
                         <div className="signup-form-password-container">
                             <label className="signup-form-label-password">Password</label>
-                            <input className="signup-form-input-password" type='password' id='password' placeholder="Enter your password..." value={password} onChange={(e) => setPassword(e.target.value)} required/>
+                            <button className="signup-form-password-visibility-password" type="button" onClick={() => setPasswordVisibility(!passwordVisibility)}>
+                                <img src={passwordVisibility ? PasswordVisibilityDark : PasswordVisibilityHiddenDark} alt="Password Visibility"/>
+                            </button>
+                            <input className="signup-form-input-password" type={passwordVisibility ? 'text' : 'password'} id='password' placeholder="Enter your password..." value={password} onChange={(e) => setPassword(e.target.value)} required/>
                             <label className="signup-form-label-confirm-password">Confirm Password</label>
-                            <input className="signup-form-input-confrim-password" type='password' id='confirm-password' placeholder="Enter your password..." value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required/>    
+                            <button className="signup-form-password-visibility-confirm-password" type="button" onClick={() => setConfirmPasswordVisibility(!confirmPasswordVisibility)}>
+                                <img src={confirmPasswordVisibility ? PasswordVisibilityDark : PasswordVisibilityHiddenDark} alt="Password Visibility"/>
+                            </button>
+                            <input className="signup-form-input-confrim-password" type={confirmPasswordVisibility ? 'text' : 'password'} id='confirm-password' placeholder="Enter your password..." value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required/>    
                         </div>
                         <div className="signup-terms-container">
                             <input className="signup-terms-checkbox" type="checkbox" id="terms" name="terms" value="terms" required/>

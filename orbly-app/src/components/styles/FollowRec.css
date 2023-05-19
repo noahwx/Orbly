@@ -1,0 +1,147 @@
+.follow-rec-container {
+    display: block;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 10em;
+    right: 2em;
+    width: 20em;
+    height: 30em;
+    background-color: var(--background);
+    border: 1px solid var(--border);
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 0.5em;
+    overflow: hidden;
+}
+
+.follow-rec-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    top: 0;
+    left: -0.5em;
+    width: 100%;
+    padding: 0.5em 1em;
+    border-bottom: 1px solid var(--border);
+}
+
+.follow-rec-header-text {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.follow-rec-user {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    height: 5em;
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+}
+
+.follow-rec-user-info-left {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.follow-rec-user-img {
+    position: absolute;
+    top: -2em;
+    left: 0;
+    width: 10em;
+    height: 10em;
+    object-fit: cover;
+    mask-image: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+    opacity: 0.6;
+}
+
+.follow-rec-user-info-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.follow-rec-user-info-center-top {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.follow-rec-user-name {
+    position: absolute;
+    bottom: 2em;
+    left: 1em;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+    padding-right: 1em;
+}
+
+.follow-rec-user-username {
+    position: absolute;
+    bottom: 2.7em;
+    right: 8em;
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--text);
+}
+
+.follow-rec-user-follow {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    position: absolute;
+    top: 1.4em;
+    right: 0.5em;
+}
+
+.follow-rec-user-follow-btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 5em;
+    height: 2em;
+    border: 1px solid var(--border);
+    border-radius: 0.5em;
+    background-color: var(--background);
+    color: var(--text);
+    cursor: pointer;
+}
+
+.follow-rec-user-following-btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 5em;
+    height: 2em;
+    border: 1px solid var(--border);
+    border-radius: 0.5em;
+    background-color: var(--background);
+    color: var(--text);
+    cursor: pointer;
+}
+
+.follow-rec-user-follow-btn:hover {
+    background-color: var(--background-hover);
+}
+
+.follow-rec-user-following-btn:hover {
+    background-color: var(--background-hover);
+}
+
+.follow-rec-user-verified {
+    position: absolute;
+    top: 1.8em;
+    right: 5.2em;
+    width: 1em;
+    height: 1em;
+}

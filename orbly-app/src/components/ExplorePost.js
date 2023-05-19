@@ -5,6 +5,7 @@ const ExplorePost = ({
     posts,
     theme,
     handlePostLiked,
+    authUser,
 }) => {
 
     const [selectedPost, setSelectedPost] = useState(null);
@@ -30,9 +31,11 @@ const ExplorePost = ({
 
     }, [openPostModal, openPostModalRef]);
 
+    /// filter((post) => post.userVerified === false)
+
     return ( 
         <div className="explore-post-area">
-            {posts.sort((a, b) => b.postDate - a.postDate).filter((post) => post.privatePost === false).map((post) => (
+            {posts.sort((a, b) => b.postDate - a.postDate).map((post) => (
                 <div className="explore-post" key={post.postID} onClick={() => {handleOpenPostModal(); setSelectedPost(post)}}>
                     <div className="explore-post-overlay">
                         <div className="explore-post-overlay-content">
@@ -53,6 +56,7 @@ const ExplorePost = ({
                     theme={theme}
                     handlePostLiked={handlePostLiked}
                     setOpenPostModal={setOpenPostModal}
+                    authUser={authUser}
                 />
             }
         </div>
