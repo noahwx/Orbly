@@ -247,3 +247,20 @@
     color: var(--grey);
     text-decoration: underline;
 }
+
+.signin-password-toggle {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 14.2em;
+    right: 8.2em;
+    background: none;
+    border: none;
+}
+
+.signin-password-toggle:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}

@@ -65,11 +65,11 @@
     align-items: center;
     justify-content: flex-start;
     position: relative;
-    top: -2.5em;
-    left: 8.7em;
+    top: -3.2em;
+    left: 10.1em;
     z-index: 1;
     height: 2em;
-    width: 12.3em;
+    width: 15em;
 }
 
 .profile-stats-username {
@@ -77,6 +77,13 @@
     font-weight: 700;
     color: var(--text);
     padding-right: 1em;
+}
+
+.profile-verified-check {
+    position: relative;
+    top: 0.1em;
+    width: 1em;
+    height: 1em;
 }
 
 .profile-stats-edit-profile {
@@ -115,10 +122,18 @@
     padding-right: 1em;
 }
 
+.profile-stats-followers:hover {
+    cursor: pointer;
+}
+
 .profile-stats-following {
     font-size: 1rem;
     font-weight: 600;
     color: var(--text);
+}
+
+.profile-stats-following:hover {
+    cursor: pointer;
 }
 
 .profile-stats-other-info {
@@ -268,4 +283,11 @@
 
 .profile-stats-link a:hover {
     text-decoration: underline;
+}
+
+@media screen and (min-width: 1920px) {
+   .profile-stats-username-container {
+        top: -5em;
+        left: 10.8em;
+   }
 }

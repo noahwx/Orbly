@@ -1,0 +1,155 @@
+.create-message-background {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 200;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.create-message-modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 3000;
+    width: 30em;
+    height: 30em;
+    background-color: var(--background);
+    border: 1px solid var(--border);
+    border-radius: 0.5em;
+    overflow: hidden;
+}
+
+.create-message-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 3em;
+    padding: 0 1em;
+    background-color: var(--background);
+    border-bottom: 1px solid var(--border);
+}
+
+.create-message-title {
+    padding-left: 1em;
+    font-size: 1.2em;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.create-message-close-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5em;
+    height: 2em;
+    background: none;
+    border: none;
+    color: var(--text);
+    cursor: pointer;
+}
+
+.create-message-user-search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 3em;
+    width: 100%;
+    height: 3em;
+    padding: 0 1em;
+    background-color: var(--background);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.create-message-user-search-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 2em;
+    width: 2em;
+    height: 2em;
+    margin-right: 1em;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.create-message-user-search-input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 5em;
+    width: 70%;
+    height: 2em;
+    padding: 0 1em;
+    background: none;
+    border: none;
+    border-radius: 0.5em;
+    font-size: 1em;
+    color: var(--text);
+}
+
+.create-message-user-search-input:focus {
+    outline: none;
+}
+
+.create-message-user {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    top: 4em;
+    width: 90%;
+    height: 3em;
+    padding: 0 1em;
+    background-color: var(--background);
+    border-bottom: 1px solid var(--border);
+}
+
+.create-message-user-avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.create-message-user-name {
+    padding-left: 1em;
+    font-size: 1em;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.create-message-user-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5em;
+    height: 2em;
+    background: none;
+    border: none;
+    color: var(--text);
+    cursor: pointer;
+}
+
+.create-message-user-button:hover {
+    background-color: var(--background-hover);
+    border-radius: 1em;
+}

@@ -190,3 +190,15 @@
         transform: scale(0);
     }
 }
+
+.create-modal-text-count {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: absolute;
+    top: 16em;
+    right: -0.5em;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text);
+}

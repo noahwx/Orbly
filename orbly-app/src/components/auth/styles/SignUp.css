@@ -6,12 +6,13 @@
     width: 100vw;
     overflow: scroll;
     background-color: var(--white);
+    margin: 1em;
 }
 
 .signup-logo {
     position: absolute;
     top: 1em;
-    left: 1em;
+    left: 2em;
     width: 5em;
     height: 5em;
     border-radius: 50%;
@@ -28,6 +29,7 @@
 
 .signup-logo:hover {
     transform: rotate(360deg) scale(5);
+    cursor: pointer;
 }
 
 .signup-form-container {
@@ -320,4 +322,34 @@
 .signup-form-bottom a:hover {
     color: var(--grey);
     text-decoration: underline;
+}
+
+.signup-form-password-visibility-password {
+    position: absolute;
+    top: 50.7em;
+    right: 44em;
+    width: 1.5em;
+    height: 1.5em;
+    margin: 0.5em;
+    background: none;
+    border: none;
+}
+
+.signup-form-password-visibility-password:hover {
+    cursor: pointer;
+}
+
+.signup-form-password-visibility-confirm-password {
+    position: absolute;
+    top: 58.8em;
+    right: 44em;
+    width: 1.5em;
+    height: 1.5em;
+    margin: 0.5em;
+    background: none;
+    border: none;
+}
+
+.signup-form-password-visibility-confirm-password:hover {
+    cursor: pointer;
 }

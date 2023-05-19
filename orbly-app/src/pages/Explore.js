@@ -18,6 +18,7 @@ const Explore = ({
     handlePostModal,
     selectedPost,
     handlePostLiked,
+    notifications,
 }) => {
 
     const auth = getAuth();
@@ -44,8 +45,8 @@ const Explore = ({
     }
 
     useEffect(() => {
-        document.title = 'Orbly - Explore';
-    }, []);
+        document.title = `Orbly - Explore ${notifications.length > 0 ? `(${notifications.length})` : ''}`;
+    }, [notifications]);
 
     return ( 
         <div className='explore'>
@@ -62,6 +63,7 @@ const Explore = ({
                 toggleTheme={toggleTheme}
                 theme={theme}
                 handleCreatePost={handleCreatePost}
+                notifications={notifications}
             />
             <ExplorePost 
                 auth={auth}

@@ -1,0 +1,124 @@
+.chat-rooms {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    left: 12%;
+    width: 30%;
+    height: 100%;
+    background-color: var(--background);
+    border-right: 1px solid var(--border);
+    overflow: hidden;
+}
+
+.chat-rooms-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 10%;
+}
+
+.chat-rooms-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text);
+    padding-right: 10em;
+}
+
+.create-message-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    border: none;
+}
+
+.create-message-button:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.chat-rooms-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.chat-rooms-list-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 5em;
+    background-color: var(--background);
+    border-bottom: 1px solid var(--border);
+}
+
+.chat-rooms-list-item-user-image {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: absolute;
+    left: 5em;
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
+}
+
+.chat-rooms-list-item-username {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: absolute;
+    left: 10em;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.chat-rooms-list-item-text {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    left: -4em;
+    top: 2em;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.chat-rooms-list-item:hover {
+    cursor: pointer;
+    background-color: var(--background-hover);
+}
+
+.chat-rooms-list-item-selected {
+    background-color: var(--background-hover);
+}
+
+.chat-rooms-list-item-menu {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: absolute;
+    right: 1em;
+    width: 2em;
+    height: 2em;
+    background: none;
+    border: none;
+}
+
+.chat-rooms-list-item-menu:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}

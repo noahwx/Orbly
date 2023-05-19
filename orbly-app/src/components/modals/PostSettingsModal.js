@@ -20,7 +20,6 @@ const PostSettingsModal = ({
         const postRef = doc(db, "posts", selectedPost.postID);
         deleteDoc(postRef).then(() => {
             console.log("Document successfully deleted!");
-            window.location.reload(true);
         }).catch((error) => {
             console.error("Error removing document: ", error);
         });
@@ -64,7 +63,7 @@ const PostSettingsModal = ({
                             <div className="post-settings-modal-item">
                                 Embed
                             </div>
-                            <div className="post-settings-modal-item" onClick={() => {navigate(`/${selectedPost.postUsername}`); window.location.reload(true);}}>
+                            <div className="post-settings-modal-item" onClick={() => navigate(`/${selectedPost.postUsername}`)}>
                                 Go to account
                             </div>
                             <div className="post-settings-modal-item-cancel" onClick={handlePostMenu}>

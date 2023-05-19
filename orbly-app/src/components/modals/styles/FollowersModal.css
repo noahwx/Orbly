@@ -1,0 +1,133 @@
+.followers-modal-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 200;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.followers-modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 3000;
+    width: 20em;
+    height: 20em;
+    background-color: var(--background);
+    border: 1px solid var(--border);
+    border-radius: 0.5em;
+    overflow: hidden;
+}
+
+.followers-modal-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 3em;
+    background-color: var(--background);
+    border-bottom: 1px solid var(--border);
+}
+
+.followers-modal-title {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--text);
+}
+
+.followers-modal-items {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    position: absolute;
+    top: 3em;
+    width: 100%;
+    height: 17em;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.followers-modal-item {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 3em;
+    padding: 0 0.5em;
+}
+
+.followers-modal-item-left {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+}
+
+.followers-modal-item-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    left: 1em;
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.followers-modal-item-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    position: absolute;
+    left: 3.5em;
+    width: calc(100% - 2em);
+    height: 100%;
+    margin-left: 0.5em;
+}
+
+.followers-modal-item-username {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text);
+}
+
+.followers-modal-item-right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+    right: 1em;
+    width: 50%;
+    height: 100%;
+}
+
+.followers-modal-item-follow-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5em;
+    height: 2em;
+    border-radius: 0.5em;
+    background-color: var(--background);
+    border: 1px solid var(--border);
+    color: var(--text);
+}
+
+.followers-modal-item-follow-button:hover {
+    cursor: pointer;
+    background-color: var(--background-hover);
+}

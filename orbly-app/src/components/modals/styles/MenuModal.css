@@ -67,3 +67,10 @@
     height: 1.5em;
     margin-right: 1em;
 }
+
+@media screen and (min-width: 1920px) {
+    .menu-modal {
+        top: 67%;
+        left: 3em;
+    }
+}

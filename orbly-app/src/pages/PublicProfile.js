@@ -24,6 +24,9 @@ const PublicProfile = ({
     handlePostLiked,
     auth,
     authUser,
+    handleFollow,
+    handleUnfollow,
+    notifications,
 }) => {
 
     const navigate = useNavigate();
@@ -39,14 +42,17 @@ const PublicProfile = ({
     }
 
     useEffect(() => {
-        document.title = `${publicLink} | Orbly`;
-    }, [publicLink]);
+        document.title = `Orbly - ${publicLink} ${notifications.length > 0 ? `(${notifications.length})` : ''}`;
+    }, [publicLink, notifications]);
 
     return ( 
         <div className="public-profile">
             <ProfileStatsPub
                 publicUser={publicUser}
                 posts={posts}
+                authUser={authUser}
+                handleFollow={handleFollow}
+                handleUnfollow={handleUnfollow}
             />
             <ProfilePostPub
                 publicUser={publicUser}
@@ -71,6 +77,7 @@ const PublicProfile = ({
                     auth={auth}
                     authUser={authUser}
                     handleSignOut={handleSignOut}
+                    notifications={notifications}
                 />
                 :
                 null
